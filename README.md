@@ -830,7 +830,8 @@ body::before{
     var(--ink);
   color:var(--cream);
   padding:160px 0;
-  position:relative;overflow:hidden;
+  position:relative;
+  /* overflow:hidden 제거 → 카드 잘림 방지 */
 }
 .journey-section .section-inner{position:relative;z-index:2;}
 .journey-section .section-eyebrow{color:var(--sage-light);}
@@ -839,14 +840,14 @@ body::before{
 .journey-section .section-title-italic{color:var(--sage-light);}
 .journey-section .section-desc{color:rgba(248,244,237,.55);}
 
-.journey-track{position:relative;margin:0 -56px;padding:0 56px;}
+.journey-track{position:relative;}
 .journey-scenes{
   display:flex;gap:24px;
   overflow-x:auto;
   padding:24px 56px 36px;
-  margin:-24px -56px 0;
   scroll-snap-type:x mandatory;
   scrollbar-width:none;
+  /* 첫 카드가 잘리지 않도록 음수 마진 제거 */
 }
 .journey-scenes::-webkit-scrollbar{display:none;}
 .scene-card{
@@ -875,8 +876,8 @@ body::before{
 .scene-line{flex:1;height:1px;background:rgba(255,255,255,.1);}
 .scene-emo{font-size:18px;}
 .scene-illust{
-  width:100%;height:140px;
-  border-radius:14px;
+  width:100%;height:200px;
+  border-radius:18px;
   margin-bottom:24px;
   display:flex;align-items:center;justify-content:center;
   position:relative;overflow:hidden;
@@ -2692,12 +2693,22 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 01</span><div class="scene-line"></div><span class="scene-emo">😟</span></div>
         <div class="scene-illust scene-illust-1">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <ellipse cx="100" cy="55" rx="62" ry="14" fill="rgba(157,190,150,.15)" stroke="rgba(157,190,150,.3)"/>
-            <circle cx="80" cy="50" r="4" fill="rgba(255,255,255,.6)"><animate attributeName="cy" values="50;46;50" dur="2.5s" repeatCount="indefinite"/></circle>
-            <circle cx="100" cy="55" r="6" fill="rgba(255,255,255,.7)"><animate attributeName="cy" values="55;49;55" dur="2.8s" repeatCount="indefinite"/></circle>
-            <circle cx="118" cy="52" r="4" fill="rgba(255,255,255,.55)"><animate attributeName="cy" values="52;47;52" dur="2.3s" repeatCount="indefinite"/></circle>
-            <text x="100" y="28" text-anchor="middle" font-size="22" fill="rgba(212,144,111,.8)" font-style="italic">?</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <!-- toilet bowl shape -->
+            <ellipse cx="150" cy="110" rx="90" ry="22" fill="rgba(157,190,150,.18)" stroke="rgba(157,190,150,.4)" stroke-width="1.5"/>
+            <path d="M70 112 Q68 160 100 175 L200 175 Q232 160 230 112" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+            <!-- water surface shimmer -->
+            <ellipse cx="150" cy="110" rx="82" ry="16" fill="rgba(100,170,200,.18)"/>
+            <!-- bubbles large -->
+            <circle cx="118" cy="103" r="8" fill="rgba(255,255,255,.65)"><animate attributeName="cy" values="103;94;103" dur="2.4s" repeatCount="indefinite"/><animate attributeName="r" values="8;9.5;8" dur="2.4s" repeatCount="indefinite"/></circle>
+            <circle cx="148" cy="108" r="11" fill="rgba(255,255,255,.75)"><animate attributeName="cy" values="108;97;108" dur="2.8s" repeatCount="indefinite"/><animate attributeName="r" values="11;13;11" dur="2.8s" repeatCount="indefinite"/></circle>
+            <circle cx="178" cy="104" r="8" fill="rgba(255,255,255,.6)"><animate attributeName="cy" values="104;95;104" dur="2.2s" repeatCount="indefinite"/><animate attributeName="r" values="8;9;8" dur="2.2s" repeatCount="indefinite"/></circle>
+            <circle cx="135" cy="114" r="6" fill="rgba(255,255,255,.55)"><animate attributeName="cy" values="114;108;114" dur="2s" repeatCount="indefinite"/></circle>
+            <circle cx="163" cy="116" r="5" fill="rgba(255,255,255,.5)"><animate attributeName="cy" values="116;110;116" dur="1.8s" repeatCount="indefinite"/></circle>
+            <!-- question mark -->
+            <text x="150" y="58" font-size="44" fill="rgba(212,144,111,.85)" text-anchor="middle" font-style="italic" font-family="Georgia,serif">?</text>
+            <!-- label -->
+            <text x="150" y="148" font-size="11" fill="rgba(255,255,255,.45)" text-anchor="middle" font-family="sans-serif" letter-spacing="2">FOAM DETECTED</text>
           </svg>
         </div>
         <div class="scene-phase">균열의 시작</div>
@@ -2708,13 +2719,26 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 02</span><div class="scene-line"></div><span class="scene-emo">😔</span></div>
         <div class="scene-illust scene-illust-2">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <rect x="50" y="20" width="100" height="60" rx="8" fill="rgba(255,255,255,.95)"/>
-            <rect x="56" y="28" width="88" height="6" rx="3" fill="#ccc"/>
-            <text x="60" y="48" font-size="6" fill="#1a0dab">거품뇨, 정말 위험한가요?</text>
-            <text x="60" y="58" font-size="5" fill="#D44">단백뇨 의심...</text>
-            <text x="60" y="66" font-size="5" fill="#666">만성콩팥병 초기 증상...</text>
-            <text x="60" y="76" font-size="5" fill="#666">병원 가야 할까?</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <!-- phone frame -->
+            <rect x="70" y="14" width="160" height="155" rx="14" fill="rgba(255,255,255,.97)" stroke="rgba(0,0,0,.08)" stroke-width="1"/>
+            <!-- search bar -->
+            <rect x="82" y="26" width="136" height="18" rx="9" fill="#f0f0f0"/>
+            <text x="92" y="39" font-size="9" fill="#888" font-family="sans-serif">🔍  거품뇨 원인</text>
+            <!-- result 1 — warning -->
+            <rect x="82" y="52" width="136" height="32" rx="5" fill="rgba(255,220,220,.6)"/>
+            <text x="89" y="64" font-size="9" fill="#1a0dab" font-family="sans-serif" font-weight="600">거품뇨, 정말 위험한가요?</text>
+            <text x="89" y="76" font-size="8" fill="#cc3333" font-family="sans-serif">단백뇨 의심, 만성콩팥병 초기...</text>
+            <!-- result 2 -->
+            <rect x="82" y="90" width="136" height="28" rx="5" fill="rgba(255,255,255,.8)"/>
+            <text x="89" y="102" font-size="9" fill="#1a0dab" font-family="sans-serif">고단백 식단의 위험성</text>
+            <text x="89" y="113" font-size="8" fill="#555" font-family="sans-serif">신장 부담을 키울 수 있어...</text>
+            <!-- result 3 -->
+            <rect x="82" y="124" width="136" height="28" rx="5" fill="rgba(255,255,255,.8)"/>
+            <text x="89" y="136" font-size="9" fill="#1a0dab" font-family="sans-serif">병원 가야 할까요?</text>
+            <text x="89" y="147" font-size="8" fill="#555" font-family="sans-serif">검사 시기를 놓치면...</text>
+            <!-- sad face overlay top right -->
+            <text x="215" y="50" font-size="28" text-anchor="middle">😟</text>
           </svg>
         </div>
         <div class="scene-phase">불안의 증폭</div>
@@ -2725,12 +2749,29 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 03</span><div class="scene-line"></div><span class="scene-emo">🤔</span></div>
         <div class="scene-illust scene-illust-3">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <rect x="60" y="15" width="80" height="70" rx="10" fill="rgba(157,190,150,.4)"/>
-            <text x="100" y="40" text-anchor="middle" font-size="7" fill="white" font-weight="bold">"다이어트 중</text>
-            <text x="100" y="50" text-anchor="middle" font-size="7" fill="white" font-weight="bold">몸이 보내는 신호,</text>
-            <text x="100" y="60" text-anchor="middle" font-size="7" fill="white" font-weight="bold">무시하고 있나요?"</text>
-            <text x="100" y="76" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.7)">@wellness_pilates</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <!-- phone frame -->
+            <rect x="90" y="8" width="120" height="166" rx="14" fill="#111"/>
+            <rect x="93" y="12" width="114" height="158" rx="11" fill="url(#reelGrad)"/>
+            <defs>
+              <linearGradient id="reelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#3a6e34"/>
+                <stop offset="100%" style="stop-color:#1a3a16"/>
+              </linearGradient>
+            </defs>
+            <!-- reel content -->
+            <text x="150" y="58" font-size="22" text-anchor="middle">🌿</text>
+            <text x="150" y="88" font-size="9" fill="white" text-anchor="middle" font-weight="700" font-family="sans-serif">"다이어트 중</text>
+            <text x="150" y="101" font-size="9" fill="white" text-anchor="middle" font-weight="700" font-family="sans-serif">몸이 보내는 신호,</text>
+            <text x="150" y="114" font-size="9" fill="white" text-anchor="middle" font-weight="700" font-family="sans-serif">무시하고 있나요?"</text>
+            <!-- handle -->
+            <text x="150" y="136" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle" font-family="sans-serif">@wellness_pilates</text>
+            <!-- like / comment icons -->
+            <text x="191" y="85" font-size="13" text-anchor="middle">❤️</text>
+            <text x="191" y="105" font-size="13" text-anchor="middle">💬</text>
+            <!-- glow hint on left -->
+            <circle cx="40" cy="90" r="28" fill="rgba(157,190,150,.18)" filter="blur(10px)"/>
+            <text x="40" y="96" font-size="26" text-anchor="middle">✨</text>
           </svg>
         </div>
         <div class="scene-phase">우연한 발견</div>
@@ -2741,15 +2782,25 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 04</span><div class="scene-line"></div><span class="scene-emo">😊</span></div>
         <div class="scene-illust scene-illust-4">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <rect x="50" y="15" width="100" height="70" rx="10" fill="rgba(255,255,255,.95)"/>
-            <text x="100" y="32" text-anchor="middle" font-size="7" fill="#2C2A26" font-weight="bold">자가 체크 7문항</text>
-            <rect x="58" y="40" width="84" height="10" rx="3" fill="rgba(157,190,150,.6)"/>
-            <text x="100" y="48" text-anchor="middle" font-size="6" fill="white" font-weight="600">고단백 식단 6개월+ ✓</text>
-            <rect x="58" y="54" width="84" height="10" rx="3" fill="rgba(157,190,150,.6)"/>
-            <text x="100" y="62" text-anchor="middle" font-size="6" fill="white" font-weight="600">거품뇨 경험 ✓</text>
-            <rect x="58" y="68" width="84" height="10" rx="3" fill="rgba(157,190,150,.6)"/>
-            <text x="100" y="76" text-anchor="middle" font-size="6" fill="white" font-weight="600">하루 8시간 좌식 ✓</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <!-- card bg -->
+            <rect x="50" y="10" width="200" height="162" rx="16" fill="rgba(255,255,255,.97)"/>
+            <!-- title -->
+            <text x="150" y="34" font-size="11" fill="#2C2A26" text-anchor="middle" font-weight="700" font-family="sans-serif">자가 체크 7문항</text>
+            <text x="150" y="48" font-size="8.5" fill="#7A746C" text-anchor="middle" font-family="sans-serif">위험군 여부를 확인해보세요</text>
+            <!-- checked rows -->
+            <rect x="62" y="56" width="176" height="24" rx="6" fill="rgba(157,190,150,.55)"/>
+            <text x="74" y="72" font-size="9.5" fill="white" font-family="sans-serif">고단백 식단 6개월 이상</text>
+            <text x="226" y="72" font-size="13" fill="white" text-anchor="middle">✓</text>
+            <rect x="62" y="84" width="176" height="24" rx="6" fill="rgba(157,190,150,.55)"/>
+            <text x="74" y="100" font-size="9.5" fill="white" font-family="sans-serif">거품뇨를 경험한 적 있다</text>
+            <text x="226" y="100" font-size="13" fill="white" text-anchor="middle">✓</text>
+            <rect x="62" y="112" width="176" height="24" rx="6" fill="rgba(157,190,150,.55)"/>
+            <text x="74" y="128" font-size="9.5" fill="white" font-family="sans-serif">하루 8시간 이상 좌식</text>
+            <text x="226" y="128" font-size="13" fill="white" text-anchor="middle">✓</text>
+            <!-- result banner -->
+            <rect x="62" y="144" width="176" height="22" rx="7" fill="rgba(90,127,84,.15)" stroke="rgba(90,127,84,.35)" stroke-width="1"/>
+            <text x="150" y="158" font-size="9" fill="#5A7F54" text-anchor="middle" font-family="sans-serif" font-style="italic">기록을 시작할 적절한 타이밍이에요 ✦</text>
           </svg>
         </div>
         <div class="scene-phase">첫 만남</div>
@@ -2760,18 +2811,34 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 05</span><div class="scene-line"></div><span class="scene-emo">🌱</span></div>
         <div class="scene-illust scene-illust-5">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <rect x="50" y="20" width="100" height="60" rx="10" fill="rgba(255,255,255,.95)"/>
-            <text x="60" y="32" font-size="6" fill="#2C2A26" font-weight="bold">오늘의 나노 루틴</text>
-            <rect x="58" y="36" width="84" height="11" rx="3" fill="rgba(157,190,150,.2)"/>
-            <text x="62" y="44" font-size="5" fill="#2C2A26">🚶 기상 후 스트레칭</text>
-            <text x="138" y="44" font-size="6" fill="#5A7F54">✓</text>
-            <rect x="58" y="49" width="84" height="11" rx="3" fill="rgba(157,190,150,.2)"/>
-            <text x="62" y="57" font-size="5" fill="#2C2A26">🌿 식이섬유 섭취</text>
-            <text x="138" y="57" font-size="6" fill="#5A7F54">✓</text>
-            <rect x="58" y="62" width="84" height="11" rx="3" fill="rgba(157,190,150,.2)"/>
-            <text x="62" y="70" font-size="5" fill="#2C2A26">🪑 좌욕 5분</text>
-            <text x="138" y="70" font-size="6" fill="#5A7F54">✓</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="40" y="10" width="220" height="162" rx="16" fill="rgba(255,255,255,.97)"/>
+            <text x="55" y="32" font-size="11" fill="#2C2A26" font-weight="700" font-family="sans-serif">오늘의 나노 루틴</text>
+            <!-- routine 1 -->
+            <rect x="52" y="40" width="196" height="26" rx="8" fill="rgba(157,190,150,.2)"/>
+            <text x="62" y="49" font-size="11">🚶</text>
+            <text x="80" y="48" font-size="9" fill="#3D3A35" font-family="sans-serif" font-weight="600">기상 후 스트레칭</text>
+            <text x="80" y="59" font-size="7.5" fill="#7A746C" font-family="sans-serif">항문 혈류 개선 5분</text>
+            <circle cx="234" cy="53" r="9" fill="#5A7F54"/>
+            <text x="234" y="57" font-size="9" fill="white" text-anchor="middle">✓</text>
+            <!-- routine 2 -->
+            <rect x="52" y="72" width="196" height="26" rx="8" fill="rgba(157,190,150,.2)"/>
+            <text x="62" y="81" font-size="11">🌿</text>
+            <text x="80" y="80" font-size="9" fill="#3D3A35" font-family="sans-serif" font-weight="600">식이섬유 섭취</text>
+            <text x="80" y="91" font-size="7.5" fill="#7A746C" font-family="sans-serif">채소·과일 목표량 절반</text>
+            <circle cx="234" cy="85" r="9" fill="#5A7F54"/>
+            <text x="234" y="89" font-size="9" fill="white" text-anchor="middle">✓</text>
+            <!-- routine 3 -->
+            <rect x="52" y="104" width="196" height="26" rx="8" fill="rgba(157,190,150,.2)"/>
+            <text x="62" y="113" font-size="11">🪑</text>
+            <text x="80" y="112" font-size="9" fill="#3D3A35" font-family="sans-serif" font-weight="600">좌욕 5분</text>
+            <text x="80" y="123" font-size="7.5" fill="#7A746C" font-family="sans-serif">하부 케어 루틴 유지</text>
+            <circle cx="234" cy="117" r="9" fill="#5A7F54"/>
+            <text x="234" y="121" font-size="9" fill="white" text-anchor="middle">✓</text>
+            <!-- forest mini -->
+            <rect x="52" y="138" width="196" height="26" rx="8" fill="rgba(157,190,150,.1)" stroke="rgba(157,190,150,.3)" stroke-width="1"/>
+            <text x="62" y="153" font-size="11">🌱</text>
+            <text x="78" y="153" font-size="9" fill="#5A7F54" font-family="sans-serif" font-weight="600">벚꽃나무 · 씨앗 → 새잎 성장 중!</text>
           </svg>
         </div>
         <div class="scene-phase">루틴의 시작</div>
@@ -2782,20 +2849,36 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 06</span><div class="scene-line"></div><span class="scene-emo">💚</span></div>
         <div class="scene-illust scene-illust-6">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <rect x="40" y="15" width="120" height="70" rx="10" fill="rgba(255,255,255,.95)"/>
-            <text x="50" y="28" font-size="7" fill="#5A7F54" font-weight="bold">📊 핵심 건강 지표</text>
-            <rect x="50" y="34" width="32" height="22" rx="3" fill="rgba(214,183,117,.2)"/>
-            <text x="66" y="44" text-anchor="middle" font-size="9" fill="#2C2A26" font-weight="bold">1.8L</text>
-            <text x="66" y="53" text-anchor="middle" font-size="5" fill="#9C7E40">목표 미달</text>
-            <rect x="84" y="34" width="32" height="22" rx="3" fill="rgba(229,181,176,.3)"/>
-            <text x="100" y="44" text-anchor="middle" font-size="9" fill="#2C2A26" font-weight="bold">7.2/10</text>
-            <text x="100" y="53" text-anchor="middle" font-size="5" fill="#C44848">관리 필요</text>
-            <rect x="118" y="34" width="32" height="22" rx="3" fill="rgba(157,190,150,.25)"/>
-            <text x="134" y="44" text-anchor="middle" font-size="9" fill="#2C2A26" font-weight="bold">3회</text>
-            <text x="134" y="53" text-anchor="middle" font-size="5" fill="#5A7F54">감소 추세</text>
-            <rect x="50" y="60" width="100" height="20" rx="3" fill="rgba(157,190,150,.1)"/>
-            <text x="100" y="74" text-anchor="middle" font-size="5" fill="#5A7F54" font-style="italic">"흐름이 좋아지고 있어요"</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="8" width="240" height="166" rx="16" fill="rgba(255,255,255,.97)"/>
+            <text x="45" y="28" font-size="10.5" fill="#5A7F54" font-weight="700" font-family="sans-serif">📊  핵심 건강 지표 요약</text>
+            <!-- 3 metric cards -->
+            <rect x="40" y="36" width="64" height="42" rx="8" fill="rgba(214,183,117,.2)"/>
+            <text x="72" y="52" text-anchor="middle" font-size="16" fill="#2C2A26" font-weight="700" font-family="sans-serif">1.8</text>
+            <text x="72" y="62" text-anchor="middle" font-size="8" fill="#9A746C" font-family="sans-serif">L · 수분</text>
+            <rect x="40" y="41" width="40" height="3" rx="1.5" fill="#D6B775"/>
+            <rect x="118" y="36" width="64" height="42" rx="8" fill="rgba(229,181,176,.3)"/>
+            <text x="150" y="52" text-anchor="middle" font-size="16" fill="#2C2A26" font-weight="700" font-family="sans-serif">7.2</text>
+            <text x="150" y="62" text-anchor="middle" font-size="8" fill="#CC4848" font-family="sans-serif">거품 관리 필요</text>
+            <rect x="118" y="41" width="52" height="3" rx="1.5" fill="#D44"/>
+            <rect x="196" y="36" width="64" height="42" rx="8" fill="rgba(157,190,150,.25)"/>
+            <text x="228" y="52" text-anchor="middle" font-size="16" fill="#2C2A26" font-weight="700" font-family="sans-serif">3회</text>
+            <text x="228" y="62" text-anchor="middle" font-size="8" fill="#5A7F54" font-family="sans-serif">감소 추세 ↓</text>
+            <rect x="196" y="41" width="28" height="3" rx="1.5" fill="#5A7F54"/>
+            <!-- bar chart -->
+            <text x="45" y="94" font-size="9" fill="#2C2A26" font-weight="700" font-family="sans-serif">소변 거품 7일 추이</text>
+            <rect x="43" y="100" width="214" height="46" rx="8" fill="rgba(157,190,150,.08)"/>
+            <!-- bars with varying heights -->
+            <rect x="54"  y="124" width="20" height="16" rx="2" fill="#9DBE96"/>
+            <rect x="82"  y="118" width="20" height="22" rx="2" fill="#D6B775"/>
+            <rect x="110" y="126" width="20" height="14" rx="2" fill="#9DBE96"/>
+            <rect x="138" y="110" width="20" height="30" rx="2" fill="#D44"/>
+            <rect x="166" y="114" width="20" height="26" rx="2" fill="#D44"/>
+            <rect x="194" y="116" width="20" height="24" rx="2" fill="#D44"/>
+            <rect x="222" y="117" width="20" height="23" rx="2" fill="#D44"/>
+            <!-- insight -->
+            <rect x="40" y="154" width="220" height="16" rx="6" fill="rgba(157,190,150,.15)"/>
+            <text x="150" y="165" font-size="8.5" fill="#5A7F54" text-anchor="middle" font-style="italic" font-family="sans-serif">"수분 루틴이 오르면서 흐름이 좋아지고 있어요"</text>
           </svg>
         </div>
         <div class="scene-phase">빛의 순간</div>
@@ -2806,14 +2889,24 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 07</span><div class="scene-line"></div><span class="scene-emo">⭐</span></div>
         <div class="scene-illust scene-illust-7">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <rect x="50" y="15" width="100" height="70" rx="10" fill="rgba(255,255,255,.95)"/>
-            <rect x="76" y="22" width="48" height="11" rx="5" fill="rgba(157,190,150,.25)"/>
-            <text x="100" y="30" text-anchor="middle" font-size="5" fill="#5A7F54" font-weight="bold">PREMIUM</text>
-            <text x="100" y="50" text-anchor="middle" font-size="20" fill="#2C2A26" font-weight="bold" font-family="serif">2,900</text>
-            <text x="100" y="60" text-anchor="middle" font-size="5" fill="#7A746C">원/월 · 광고 제거 + 프리미엄</text>
-            <rect x="60" y="68" width="80" height="13" rx="6" fill="#5A7F54"/>
-            <text x="100" y="77" text-anchor="middle" font-size="6" fill="white" font-weight="bold">계속 기록할게요 →</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="50" y="10" width="200" height="162" rx="18" fill="rgba(255,255,255,.97)"/>
+            <!-- premium badge -->
+            <rect x="106" y="22" width="88" height="18" rx="9" fill="rgba(157,190,150,.25)"/>
+            <text x="150" y="34" font-size="9" fill="#5A7F54" text-anchor="middle" font-weight="700" font-family="sans-serif" letter-spacing="2">PREMIUM</text>
+            <!-- price big -->
+            <text x="150" y="78" font-size="38" fill="#2C2A26" text-anchor="middle" font-weight="700" font-family="Georgia,serif">2,900</text>
+            <text x="150" y="94" font-size="10" fill="#7A746C" text-anchor="middle" font-family="sans-serif">원 / 월</text>
+            <!-- divider -->
+            <line x1="70" y1="104" x2="230" y2="104" stroke="#E4DCD0" stroke-width="1"/>
+            <!-- feature list -->
+            <text x="76" y="121" font-size="9" fill="#5A7F54" font-family="sans-serif">✓</text>
+            <text x="90" y="121" font-size="9" fill="#3D3A35" font-family="sans-serif">광고 제거 + 프리미엄 콘텐츠</text>
+            <text x="76" y="136" font-size="9" fill="#5A7F54" font-family="sans-serif">✓</text>
+            <text x="90" y="136" font-size="9" fill="#3D3A35" font-family="sans-serif">장·단기 통합 맞춤 리포트</text>
+            <!-- CTA button -->
+            <rect x="62" y="148" width="176" height="18" rx="9" fill="#5A7F54"/>
+            <text x="150" y="160" font-size="9" fill="white" text-anchor="middle" font-weight="700" font-family="sans-serif">계속 기록할게요 →</text>
           </svg>
         </div>
         <div class="scene-phase">약속의 순간</div>
@@ -2824,15 +2917,24 @@ footer{
       <div class="scene-card">
         <div class="scene-num-row"><span class="scene-num">SCENE / 08</span><div class="scene-line"></div><span class="scene-emo">💜</span></div>
         <div class="scene-illust scene-illust-8">
-          <svg viewBox="0 0 200 100" width="160" height="80">
-            <rect x="20" y="20" width="100" height="14" rx="6" fill="white"/>
-            <text x="28" y="30" font-size="6" fill="#2C2A26">나 요즘 이 앱 쓰는데... 🌱</text>
-            <rect x="80" y="38" width="100" height="14" rx="6" fill="rgba(157,190,150,.7)"/>
-            <text x="88" y="48" font-size="6" fill="white">헐 그런 것도 있어?</text>
-            <rect x="20" y="56" width="100" height="14" rx="6" fill="white"/>
-            <text x="28" y="66" font-size="6" fill="#2C2A26">The Bottom Line!</text>
-            <rect x="80" y="74" width="80" height="12" rx="5" fill="rgba(157,190,150,.7)"/>
-            <text x="88" y="83" font-size="6" fill="white">나도 써볼래 ✨</text>
+          <svg viewBox="0 0 300 180" width="260" height="160" xmlns="http://www.w3.org/2000/svg">
+            <!-- chat bg -->
+            <rect x="20" y="8" width="260" height="166" rx="16" fill="rgba(255,255,255,.2)"/>
+            <!-- message 1 (left) -->
+            <rect x="32" y="20" width="156" height="26" rx="13" fill="white"/>
+            <text x="44" y="34" font-size="9.5" fill="#2C2A26" font-family="sans-serif">나 요즘 이 앱 쓰는데... 🌱</text>
+            <!-- message 2 (right) -->
+            <rect x="114" y="52" width="154" height="26" rx="13" fill="rgba(157,190,150,.75)"/>
+            <text x="126" y="66" font-size="9.5" fill="white" font-family="sans-serif">헐 그런 것도 있어? 뭐야?</text>
+            <!-- message 3 (left) -->
+            <rect x="32" y="84" width="170" height="26" rx="13" fill="white"/>
+            <text x="44" y="98" font-size="9.5" fill="#2C2A26" font-family="sans-serif">The Bottom Line! 진짜 간단해</text>
+            <!-- message 4 (right) -->
+            <rect x="110" y="116" width="158" height="26" rx="13" fill="rgba(157,190,150,.75)"/>
+            <text x="122" y="130" font-size="9.5" fill="white" font-family="sans-serif">오늘 바로 다운받아볼래 ✨</text>
+            <!-- bottom caption -->
+            <rect x="60" y="150" width="180" height="18" rx="9" fill="rgba(255,255,255,.45)"/>
+            <text x="150" y="162" text-anchor="middle" font-size="8.5" fill="#2D4329" font-style="italic" font-family="sans-serif">피부 관리하듯, 당연하게.</text>
           </svg>
         </div>
         <div class="scene-phase">확산의 순간</div>
@@ -2842,7 +2944,7 @@ footer{
       </div>
     </div>
 
-    <div class="journey-controls" style="padding:0 64px;">
+    <div class="journey-controls" style="padding:0 56px 0 56px;">
       <div class="journey-progress-bar">
         <div class="journey-progress-fill" id="journeyProgress"></div>
       </div>
